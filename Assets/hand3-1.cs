@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class hand : MonoBehaviour {
-    public string part = "NONE";
+public class hand31 : MonoBehaviour {
+    public string part = "hand3-1";
 
 	IFirebase firebase;
 	IFirebase sampleChild;
@@ -21,10 +21,12 @@ public class hand : MonoBehaviour {
 			Debug.Log ("Child removed!");
 		};
 		
-		
+		sampleChild = firebase.Child(part);
+		//sampleChild.SetJsonValue("{\"hand-1\":{"\child_working\" : true}}");
+		//sampleChild.SetValue("true");
 		//sampleChild.SetBooleanValue(true);
 		//firebase.SetValue ("SetValue working?");
-		//firebase.SetJsonValue("{\"example_child\":{\"child_working\" : true}}");
+		//firebase.SetJsonValue("{\"example_child":{\"child_working\" : true}}");
 	}
 	
 	// Update is called once per frame
@@ -32,14 +34,12 @@ public class hand : MonoBehaviour {
 	
 	}
 	void OnTriggerEnter(Collider col) {
-		Debug.Log("Enter: " + part);
-		sampleChild = firebase.Child(part);
 		sampleChild.SetValue("true");
+		Debug.Log("Enter: " + part);
 	}
 
 	void OnTriggerExit(Collider collision) {
-		Debug.Log ("Exit: " + part);
-		sampleChild = firebase.Child(part);
 		sampleChild.SetValue("false");
+		Debug.Log ("Exit: " + part);
 	}
 }
