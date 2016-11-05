@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class hand : MonoBehaviour {
+    public string part = "NONE";
 
 	// Use this for initialization
 	void Start () {
@@ -12,13 +13,11 @@ public class hand : MonoBehaviour {
 	void Update () {
 	
 	}
-	void OnCollisionEnter(Collision col) {
-		Debug.Log("Enter called..");
+	void OnTriggerEnter(Collider col) {
+		Debug.Log("Enter: " + part);
 	}
-	void OnCollisionStay(Collision col) {
-		Debug.Log ("Stay occuring..");
-	}
-	void onCollisionExit(Collision collision) {
-		Debug.Log ("Exit called..");
+
+	void OnTriggerExit(Collider collision) {
+		Debug.Log ("Exit: " + part);
 	}
 }
